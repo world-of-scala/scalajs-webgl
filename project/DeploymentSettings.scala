@@ -152,7 +152,7 @@ object DeploymentSettings {
 
     val outputFile = baseDirectory / "scripts" / "target" / "build-env.sh"
 
-    val mainJSFile = "modules/client/target/scala-$SCALA_VERSION/client-fastopt/main.js"
+    val mainJSFile = "example/client/target/scala-$SCALA_VERSION/client-fastopt/main.js"
     lazy val buildFileContent = s"""
                                    |#!/bin/usr/env bash
                                    |

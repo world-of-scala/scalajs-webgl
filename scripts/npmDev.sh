@@ -8,6 +8,6 @@ echo
 echo "Starting npm dev server for client"
 echo " * SCALA_VERSION=$SCALA_VERSION"
 sleep 3
-cd modules/client
+cd example/client
 #DEBUG="vite:sourcemap" npm run dev
 npm run dev

@@ -50,14 +50,7 @@ popd() {
     command popd "$@" >/dev/null
 }
 
-pushd modules/client
-npmInstall
-popd
-
-#
-# Generating scalablytyped
-#
-pushd modules/client/scalablytyped
+pushd example/client
 npmInstall
 popd
 

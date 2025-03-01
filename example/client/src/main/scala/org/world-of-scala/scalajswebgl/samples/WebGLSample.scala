@@ -2,6 +2,7 @@ package org.worldofscala.app.world
 
 import org.scalajs.dom
 import org.scalajs.dom.{WebGLBuffer, WebGLProgram, WebGLRenderingContext => GL}
+
 import scala.scalajs.js.JSConverters.*
 import scala.scalajs.js.typedarray.*
 import org.scalajs.dom.WebGLShader

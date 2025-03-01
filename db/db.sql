@@ -1,0 +1,2 @@
+CREATE DATABASE "scalajs-webgl";
+

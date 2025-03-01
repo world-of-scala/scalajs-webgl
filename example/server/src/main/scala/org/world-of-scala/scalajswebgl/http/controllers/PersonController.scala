@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.http.controllers
+package org.worldofscala.scalajswebgl.http.controllers
 
 import dev.cheleb.ziotapir.SecuredBaseController
 
@@ -7,10 +7,10 @@ import zio.*
 import sttp.tapir.server.ServerEndpoint
 import sttp.tapir.ztapir.*
 
-import org.world.of.scala.scalajswebgl.domain.*
-import org.world.of.scala.scalajswebgl.http.endpoints.PersonEndpoint
-import org.world.of.scala.scalajswebgl.service.PersonService
-import org.world.of.scala.scalajswebgl.service.JWTService
+import org.worldofscala.scalajswebgl.domain.*
+import org.worldofscala.scalajswebgl.http.endpoints.PersonEndpoint
+import org.worldofscala.scalajswebgl.service.PersonService
+import org.worldofscala.scalajswebgl.service.JWTService
 
 class PersonController private (personService: PersonService, jwtService: JWTService)
     extends SecuredBaseController[String, UserID](jwtService.verifyToken) {
@@ -30,7 +30,7 @@ class PersonController private (personService: PersonService, jwtService: JWTSer
     personService.getProfile(userId, withPet)
   }
 
-  override val routes: List[ServerEndpoint[Any, Task]] =List(create, login, profile)
+  override val routes: List[ServerEndpoint[Any, Task]] = List(create, login, profile)
 }
 
 object PersonController {

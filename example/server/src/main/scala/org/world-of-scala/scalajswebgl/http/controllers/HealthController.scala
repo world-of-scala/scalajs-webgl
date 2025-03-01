@@ -1,14 +1,13 @@
-package org.world.of.scala.scalajswebgl.http.controllers
+package org.worldofscala.scalajswebgl.http.controllers
 
 import zio.*
 import sttp.tapir.*
 import sttp.tapir.server.ServerEndpoint
 
-import org.world.of.scala.scalajswebgl.http.endpoints.HealthEndpoint
+import org.worldofscala.scalajswebgl.http.endpoints.HealthEndpoint
 import dev.cheleb.ziotapir.BaseController
 
-class HealthController private
-    extends BaseController {
+class HealthController private extends BaseController {
 
   val health = HealthEndpoint.healthEndpoint
     .serverLogicSuccess[Task](_ => ZIO.succeed("OK"))

@@ -1,10 +1,11 @@
-package org.world.of.scala.scalajswebgl.app
+package org.worldofscala.scalajswebgl.app
 
 import com.raquo.laminar.api.L.*
 import frontroute.*
 
 import org.scalajs.dom
 import org.worldofscala.app.world.WebGLSample
+import org.worldofscala.app.world.LaminarWebGLSample
 object Router:
   val uiBase                     = "public"
   def uiRoute(segments: String*) = segments.mkString(s"/$uiBase/", "/", "")
@@ -23,9 +24,16 @@ object Router:
               (pathEnd | path("index.html")) {
                 HomePage()
               },
-              firstMatch(path("webgl") {
-                WebGLSample()
-              }),
+              pathPrefix("webgl") {
+                firstMatch(
+                  pathEnd {
+                    WebGLSample()
+                  },
+                  path("detect") {
+                    LaminarWebGLSample()
+                  }
+                )
+              },
               path("signup") {
                 signup.SignupPage()
               },

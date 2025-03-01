@@ -1,20 +1,20 @@
-package org.world.of.scala.scalajswebgl.service
+package org.worldofscala.scalajswebgl.service
 
 import zio.*
 
 import io.scalaland.chimney.dsl._
 import java.time.ZonedDateTime
 
-import org.world.of.scala.scalajswebgl.domain.*
-import org.world.of.scala.scalajswebgl.domain.errors.*
-import org.world.of.scala.scalajswebgl.repositories.UserRepository
-import org.world.of.scala.scalajswebgl.UserEntity
-import org.world.of.scala.scalajswebgl.NewUserEntity
-import org.world.of.scala.scalajswebgl.repositories.TransactionSupport
-import org.world.of.scala.scalajswebgl.repositories.PetRepository
-import org.world.of.scala.scalajswebgl.PetEntity
-import org.world.of.scala.scalajswebgl.CatEntity
-import org.world.of.scala.scalajswebgl.DogEntity
+import org.worldofscala.scalajswebgl.domain.*
+import org.worldofscala.scalajswebgl.domain.errors.*
+import org.worldofscala.scalajswebgl.repositories.UserRepository
+import org.worldofscala.scalajswebgl.UserEntity
+import org.worldofscala.scalajswebgl.NewUserEntity
+import org.worldofscala.scalajswebgl.repositories.TransactionSupport
+import org.worldofscala.scalajswebgl.repositories.PetRepository
+import org.worldofscala.scalajswebgl.PetEntity
+import org.worldofscala.scalajswebgl.CatEntity
+import org.worldofscala.scalajswebgl.DogEntity
 
 import java.sql.SQLException
 
@@ -40,9 +40,9 @@ class PersonServiceLive private (
     else
       tx(
         for {
-          _ <- ZIO.logDebug(s"Registering user: $person")
+          _           <- ZIO.logDebug(s"Registering user: $person")
           newPetEntity = person.pet.fold(PetEntity.apply, PetEntity.apply)
-          petEntity <- petRepository.create(newPetEntity)
+          petEntity   <- petRepository.create(newPetEntity)
           user <- userRepository
                     .create(
                       NewUserEntity(

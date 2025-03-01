@@ -1,10 +1,10 @@
-package org.world.of.scala.scalajswebgl.services
+package org.worldofscala.scalajswebgl.services
 
 import zio.*
 import org.flywaydb.core.Flyway
 
-import org.world.of.scala.scalajswebgl.config.FlywayConfig
-import org.world.of.scala.scalajswebgl.config.Configs
+import org.worldofscala.scalajswebgl.config.FlywayConfig
+import org.worldofscala.scalajswebgl.config.Configs
 
 trait FlywayService {
   def runClean(): Task[Unit]

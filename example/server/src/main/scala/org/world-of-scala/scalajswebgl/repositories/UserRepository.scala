@@ -1,10 +1,10 @@
-package org.world.of.scala.scalajswebgl.repositories
+package org.worldofscala.scalajswebgl.repositories
 
 import zio.*
 
-import org.world.of.scala.scalajswebgl.UserEntity
-import org.world.of.scala.scalajswebgl.NewUserEntity
-import org.world.of.scala.scalajswebgl.domain.PetType
+import org.worldofscala.scalajswebgl.UserEntity
+import org.worldofscala.scalajswebgl.NewUserEntity
+import org.worldofscala.scalajswebgl.domain.PetType
 
 import io.getquill.*
 import io.getquill.jdbczio.*

@@ -1,10 +1,10 @@
-package org.world.of.scala.scalajswebgl.app.profile
+package org.worldofscala.scalajswebgl.app.profile
 
 import com.raquo.laminar.api.L.*
 
-import org.world.of.scala.scalajswebgl.app.given
-import org.world.of.scala.scalajswebgl.domain.*
-import org.world.of.scala.scalajswebgl.http.endpoints.PersonEndpoint
+import org.worldofscala.scalajswebgl.app.given
+import org.worldofscala.scalajswebgl.domain.*
+import org.worldofscala.scalajswebgl.http.endpoints.PersonEndpoint
 
 import dev.cheleb.ziotapir.laminar.*
 
@@ -17,7 +17,8 @@ object ProfilePage:
       // If the user is not logged in, show a message
       div(h1("Please log in to view your profile"))
       // If the user is logged in, show the profile page
-    (_ =>      div(
+    (_ =>
+      div(
         onMountCallback { _ =>
           PersonEndpoint.profile(false).emitTo(userBus)
         },

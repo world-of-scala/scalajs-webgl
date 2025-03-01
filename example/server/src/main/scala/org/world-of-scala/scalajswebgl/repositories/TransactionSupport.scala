@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.repositories
+package org.worldofscala.scalajswebgl.repositories
 
 import zio.Task
 

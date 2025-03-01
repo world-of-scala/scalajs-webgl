@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.http
+package org.worldofscala.scalajswebgl.http
 
 import zio.*
 import sttp.tapir.server.ServerEndpoint
@@ -8,7 +8,7 @@ import dev.cheleb.ziotapir.*
 
 import controllers.*
 
-import org.world.of.scala.scalajswebgl.service.*
+import org.worldofscala.scalajswebgl.service.*
 
 object HttpApi extends Routes {
 

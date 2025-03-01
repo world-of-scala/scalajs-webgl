@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.app
+package org.worldofscala.scalajswebgl.app
 
 import be.doeraene.webcomponents.ui5.*
 import be.doeraene.webcomponents.ui5.configkeys.*
@@ -7,10 +7,10 @@ import com.raquo.laminar.api.L.*
 import dev.cheleb.scalamigen.*
 import dev.cheleb.ziotapir.laminar.*
 
-import org.world.of.scala.scalajswebgl.login.LoginPassword
-import org.world.of.scala.scalajswebgl.http.endpoints.PersonEndpoint
-import org.world.of.scala.scalajswebgl.domain.UserToken
-import org.world.of.scala.scalajswebgl.domain.Password
+import org.worldofscala.scalajswebgl.login.LoginPassword
+import org.worldofscala.scalajswebgl.http.endpoints.PersonEndpoint
+import org.worldofscala.scalajswebgl.domain.UserToken
+import org.worldofscala.scalajswebgl.domain.Password
 
 import scala.concurrent.duration.DurationInt
 

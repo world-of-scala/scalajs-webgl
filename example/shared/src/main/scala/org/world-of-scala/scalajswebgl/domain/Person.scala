@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.domain
+package org.worldofscala.scalajswebgl.domain
 
 import sttp.tapir.Schema
 import zio.json.JsonCodec

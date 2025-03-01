@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.http.prometheus
+package org.worldofscala.scalajswebgl.http.prometheus
 
 import zio.*
 import sttp.tapir.ztapir.ZServerEndpoint

@@ -1,11 +1,11 @@
-package org.world.of.scala.scalajswebgl.app
+package org.worldofscala.scalajswebgl.app
 
 import dev.cheleb.scalamigen.*
 import dev.cheleb.scalamigen.ui5.UI5WidgetFactory
 
 import dev.cheleb.ziotapir.laminar.*
 
-import org.world.of.scala.scalajswebgl.domain.*
+import org.worldofscala.scalajswebgl.domain.*
 
 given Defaultable[Cat] with
   def default = Cat("")

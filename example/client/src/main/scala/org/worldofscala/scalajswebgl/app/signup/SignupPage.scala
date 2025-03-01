@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.app.signup
+package org.worldofscala.scalajswebgl.app.signup
 
 import zio.prelude.*
 
@@ -12,9 +12,9 @@ import dev.cheleb.ziotapir.laminar.*
 
 import scala.concurrent.duration.DurationInt
 
-import org.world.of.scala.scalajswebgl.app.given
-import org.world.of.scala.scalajswebgl.domain.*
-import org.world.of.scala.scalajswebgl.http.endpoints.PersonEndpoint
+import org.worldofscala.scalajswebgl.app.given
+import org.worldofscala.scalajswebgl.domain.*
+import org.worldofscala.scalajswebgl.http.endpoints.PersonEndpoint
 
 object SignupPage:
   def apply() =

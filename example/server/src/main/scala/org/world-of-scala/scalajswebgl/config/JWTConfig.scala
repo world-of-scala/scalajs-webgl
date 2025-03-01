@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.config
+package org.worldofscala.scalajswebgl.config
 
 import zio.Config
 import zio.Duration

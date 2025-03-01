@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.http
+package org.worldofscala.scalajswebgl.http
 
 import zio.*
 import zio.http.*
@@ -9,10 +9,10 @@ import sttp.tapir.server.ziohttp.*
 import sttp.tapir.swagger.bundle.SwaggerInterpreter
 import sttp.tapir.server.interceptor.cors.CORSInterceptor
 
-import org.world.of.scala.scalajswebgl.service.*
-import org.world.of.scala.scalajswebgl.http.prometheus.*
-import org.world.of.scala.scalajswebgl.services.*
-import org.world.of.scala.scalajswebgl.repositories.*
+import org.worldofscala.scalajswebgl.service.*
+import org.worldofscala.scalajswebgl.http.prometheus.*
+import org.worldofscala.scalajswebgl.services.*
+import org.worldofscala.scalajswebgl.repositories.*
 
 object HttpServer extends ZIOAppDefault {
 

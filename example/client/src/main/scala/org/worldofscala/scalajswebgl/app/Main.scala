@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.app
+package org.worldofscala.scalajswebgl.app
 
 import com.raquo.laminar.api.L.*
 import org.scalajs.dom

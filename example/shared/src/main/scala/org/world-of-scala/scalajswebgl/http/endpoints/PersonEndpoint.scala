@@ -1,11 +1,11 @@
-package org.world.of.scala.scalajswebgl.http.endpoints
+package org.worldofscala.scalajswebgl.http.endpoints
 
 import zio.*
 import sttp.tapir.*
 import sttp.tapir.json.zio.*
 import sttp.tapir.generic.auto.*
-import org.world.of.scala.scalajswebgl.domain.*
-import org.world.of.scala.scalajswebgl.login.LoginPassword
+import org.worldofscala.scalajswebgl.domain.*
+import org.worldofscala.scalajswebgl.login.LoginPassword
 
 object PersonEndpoint extends BaseEndpoint:
 

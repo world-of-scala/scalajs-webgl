@@ -1,31 +1,34 @@
-package org.world.of.scala.scalajswebgl.service
+package org.worldofscala.scalajswebgl.service
 
 import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec
 import java.security.SecureRandom
 
-/** Hasher is a utility object to hash and validate passwords.
-  *   - It uses PBKDF2WithHmacSHA512 as the hashing algorithm.
-  */
+/**
+ * Hasher is a utility object to hash and validate passwords.
+ *   - It uses PBKDF2WithHmacSHA512 as the hashing algorithm.
+ */
 object Hasher {
 
-  private val PBKDF2_ALGORITHM = "PBKDF2WithHmacSHA512"
+  private val PBKDF2_ALGORITHM  = "PBKDF2WithHmacSHA512"
   private val PBKDF2_ITERATIONS = 1000
-  private val SALT_BYTE_SIZE = 24
-  private val HASH_BYTE_SIZE = 24
+  private val SALT_BYTE_SIZE    = 24
+  private val HASH_BYTE_SIZE    = 24
 
-  /** The SecretKeyFactory is a factory for secret keys.
-    */
+  /**
+   * The SecretKeyFactory is a factory for secret keys.
+   */
   private val skf: SecretKeyFactory =
     SecretKeyFactory.getInstance(PBKDF2_ALGORITHM)
 
-  /** Hashes a password with a random salt.
-    */
+  /**
+   * Hashes a password with a random salt.
+   */
   private def pbkdf2(
-      password: Array[Char],
-      salt: Array[Byte],
-      iterations: Int,
-      nBytes: Int
+    password: Array[Char],
+    salt: Array[Byte],
+    iterations: Int,
+    nBytes: Int
   ): Array[Byte] = {
     val keySpec = PBEKeySpec(password, salt, iterations, nBytes * 8)
     skf.generateSecret(keySpec).getEncoded()
@@ -43,11 +46,12 @@ object Hasher {
       range.foldLeft(a1.length ^ a2.length)((acc, i) => acc | (a1(i) ^ a2(i)))
     diff == 0
 
-  /** Generates a hash from a password.
-    *
-    * @param password
-    * @return
-    */
+  /**
+   * Generates a hash from a password.
+   *
+   * @param password
+   * @return
+   */
   def generatedHash(password: String): String = {
     val rng: SecureRandom = new SecureRandom()
     val salt: Array[Byte] = Array.ofDim[Byte](SALT_BYTE_SIZE)
@@ -57,17 +61,18 @@ object Hasher {
     s"$PBKDF2_ITERATIONS:${toHex(salt)}:${toHex(hashBytes)}"
   }
 
-  /** Validates a password against a hash.
-    *
-    * @param string
-    * @param hash
-    * @return
-    */
+  /**
+   * Validates a password against a hash.
+   *
+   * @param string
+   * @param hash
+   * @return
+   */
   def validateHash(string: String, hash: String): Boolean =
     val hashSegments = hash.split(":")
-    val iterations = hashSegments(0).toInt
-    val salt = fromHex(hashSegments(1))
-    val validHash = fromHex(hashSegments(2))
+    val iterations   = hashSegments(0).toInt
+    val salt         = fromHex(hashSegments(1))
+    val validHash    = fromHex(hashSegments(2))
     val testHash = pbkdf2(
       string.toCharArray(),
       salt,

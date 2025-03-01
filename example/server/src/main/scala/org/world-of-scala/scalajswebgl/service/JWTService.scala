@@ -1,4 +1,4 @@
-package org.world.of.scala.scalajswebgl.service
+package org.worldofscala.scalajswebgl.service
 
 import zio.*
 
@@ -9,9 +9,9 @@ import java.time.Clock as JavaClock
 import com.auth0.jwt.JWTVerifier.BaseVerification
 import com.auth0.jwt.*
 import com.auth0.jwt.algorithms.Algorithm
-import org.world.of.scala.scalajswebgl.config.Configs
-import org.world.of.scala.scalajswebgl.config.JWTConfig
-import org.world.of.scala.scalajswebgl.domain.*
+import org.worldofscala.scalajswebgl.config.Configs
+import org.worldofscala.scalajswebgl.config.JWTConfig
+import org.worldofscala.scalajswebgl.domain.*
 
 trait JWTService {
   def createToken(user: User): Task[UserToken]

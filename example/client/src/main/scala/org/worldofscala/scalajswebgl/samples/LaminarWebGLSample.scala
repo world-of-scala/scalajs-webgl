@@ -8,7 +8,7 @@ import scala.scalajs.js.typedarray.*
 import org.scalajs.dom.WebGLShader
 import com.raquo.laminar.api.L.*
 import scala.scalajs.js
-
+import org.worldofscala.webgl.*
 object LaminarWebGLSample {
   def apply() = {
     canvasTag(onMountCallback { mc =>
@@ -17,7 +17,7 @@ object LaminarWebGLSample {
       canvas.width = 640
       canvas.height = 480
 
-      val gl = canvas.getContext("webgl").asInstanceOf[GL]
+      val gl = canvas.getWebGLContext()
 
       // Updated vertex shader with matrices
       val vsSource = """

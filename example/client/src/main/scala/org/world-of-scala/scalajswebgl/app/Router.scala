@@ -4,6 +4,7 @@ import com.raquo.laminar.api.L.*
 import frontroute.*
 
 import org.scalajs.dom
+import org.worldofscala.app.world.WebGLSample
 object Router:
   val uiBase                     = "public"
   def uiRoute(segments: String*) = segments.mkString(s"/$uiBase/", "/", "")
@@ -22,12 +23,16 @@ object Router:
               (pathEnd | path("index.html")) {
                 HomePage()
               },
+              firstMatch(path("webgl") {
+                WebGLSample()
+              }),
               path("signup") {
                 signup.SignupPage()
               },
               path("profile") {
                 profile.ProfilePage()
-              })
+              }
+            )
           },
           noneMatched {
             div("404 Not Found")

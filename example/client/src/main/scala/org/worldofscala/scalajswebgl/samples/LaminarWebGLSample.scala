@@ -5,7 +5,7 @@ import org.scalajs.dom.{WebGLBuffer, WebGLProgram, WebGLRenderingContext => GL}
 
 import scala.scalajs.js.JSConverters.*
 import scala.scalajs.js.typedarray.*
-import org.scalajs.dom.WebGLShader
+
 import com.raquo.laminar.api.L.*
 import scala.scalajs.js
 import org.worldofscala.webgl.*
@@ -44,7 +44,7 @@ object LaminarWebGLSample {
          }
        """
 
-      val shaderProgram = initShaderProgram(gl, vsSource, fsSource)
+      val shaderProgram = gl.initShaderProgram(vsSource, fsSource)
 
       // Get attribute and uniform locations
       val programInfo = new ProgramInfo(
@@ -209,37 +209,6 @@ object LaminarWebGLSample {
     gl.bufferData(GL.ELEMENT_ARRAY_BUFFER, indices, GL.STATIC_DRAW)
 
     BufferSet(positionBuffer, colorBuffer, indexBuffer)
-  }
-
-  private def initShaderProgram(gl: GL, vsSource: String, fsSource: String): WebGLProgram = {
-    val vertexShader   = loadShader(gl, GL.VERTEX_SHADER, vsSource)
-    val fragmentShader = loadShader(gl, GL.FRAGMENT_SHADER, fsSource)
-
-    val shaderProgram = gl.createProgram()
-    gl.attachShader(shaderProgram, vertexShader)
-    gl.attachShader(shaderProgram, fragmentShader)
-    gl.linkProgram(shaderProgram)
-
-    if (!gl.getProgramParameter(shaderProgram, GL.LINK_STATUS).asInstanceOf[Boolean]) {
-      println(s"Unable to initialize the shader program: ${gl.getProgramInfoLog(shaderProgram)}")
-      return null
-    }
-
-    shaderProgram
-  }
-
-  private def loadShader(gl: GL, shaderType: Int, source: String): WebGLShader = {
-    val shader = gl.createShader(shaderType)
-    gl.shaderSource(shader, source)
-    gl.compileShader(shader)
-
-    if (!gl.getShaderParameter(shader, GL.COMPILE_STATUS).asInstanceOf[Boolean]) {
-      println(s"An error occurred compiling the shaders: ${gl.getShaderInfoLog(shader)}")
-      gl.deleteShader(shader)
-      return null
-    }
-
-    shader
   }
 
   // Matrix operations helper object

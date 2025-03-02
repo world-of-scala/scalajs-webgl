@@ -6,6 +6,7 @@ import frontroute.*
 import org.scalajs.dom
 import org.worldofscala.app.world.WebGLSample
 import org.worldofscala.app.world.LaminarWebGLSample
+import org.worldofscala.app.world.Triangle
 object Router:
   val uiBase                     = "public"
   def uiRoute(segments: String*) = segments.mkString(s"/$uiBase/", "/", "")
@@ -26,12 +27,20 @@ object Router:
               },
               pathPrefix("webgl") {
                 firstMatch(
-                  pathEnd {
-                    WebGLSample()
+                  pathPrefix("adammurray") {
+                    path("triangle") {
+                      Triangle()
+                    }
+
                   },
-                  path("detect") {
-                    LaminarWebGLSample()
-                  }
+                  firstMatch(
+                    pathEnd {
+                      WebGLSample()
+                    },
+                    path("detect") {
+                      LaminarWebGLSample()
+                    }
+                  )
                 )
               },
               path("signup") {

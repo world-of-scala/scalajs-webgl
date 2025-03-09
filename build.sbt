@@ -92,8 +92,10 @@ val usedScalacOptions = Seq(
 
 lazy val core = scalajsProject("core")
   .settings(
-    libraryDependencies +=
-      "org.scala-js" %%% "scalajs-dom" % "2.8.1-local"
+    libraryDependencies ++= Seq(
+      "org.scala-js" %%% "scalajs-dom" % "2.8.1-local",
+      "com.raquo"    %%% "laminar"     % "17.2.0"
+    )
   )
 
 //

@@ -4,14 +4,38 @@ import com.raquo.laminar.api.L.*
 import frontroute.*
 
 import org.scalajs.dom
-import org.worldofscala.app.world.WebGLSample
-import org.worldofscala.app.world.LaminarWebGLSample
-import org.worldofscala.app.world.Triangle
+import org.worldofscala.app.world.*
+import org.worldofscala.scalajswebgl.samples.*
+
 object Router:
   val uiBase                     = "public"
   def uiRoute(segments: String*) = segments.mkString(s"/$uiBase/", "/", "")
   private val externalUrlBus     = EventBus[String]()
   val writer                     = externalUrlBus.writer
+
+  def webglRoutes(): Route =
+    pathPrefix("webgl") {
+      firstMatch(
+        path("shaders") {
+          Shaders()
+        },
+        pathPrefix("adammurray") {
+          path("triangle") {
+            Triangle()
+          }
+
+        },
+        firstMatch(
+          pathEnd {
+            WebGLSample()
+          },
+          path("detect") {
+            LaminarWebGLSample()
+          }
+        )
+      )
+    }
+
   def apply() =
     mainTag(
       linkHandler,
@@ -25,24 +49,7 @@ object Router:
               (pathEnd | path("index.html")) {
                 HomePage()
               },
-              pathPrefix("webgl") {
-                firstMatch(
-                  pathPrefix("adammurray") {
-                    path("triangle") {
-                      Triangle()
-                    }
-
-                  },
-                  firstMatch(
-                    pathEnd {
-                      WebGLSample()
-                    },
-                    path("detect") {
-                      LaminarWebGLSample()
-                    }
-                  )
-                )
-              },
+              webglRoutes(),
               path("signup") {
                 signup.SignupPage()
               },

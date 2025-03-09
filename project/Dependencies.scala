@@ -99,7 +99,7 @@ object Dependencies {
   val clientLibraryDependencies: Setting[Seq[ModuleID]] =
     libraryDependencies ++= Seq(
       "org.scala-js" %%% "scalajs-dom" % "2.8.1-local",
-      // pull laminar 17.1.0
+      // pull laminar 17.2.0
       "dev.cheleb" %%% "laminar-form-derivation-ui5" % Versions.laminarFormDerivation,
       // pull tapir-sttp-client and zio-tapir
       "dev.cheleb"    %%% "zio-tapir-laminar" % Versions.zioLaminarTapir,

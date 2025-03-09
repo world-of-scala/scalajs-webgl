@@ -1,7 +1,7 @@
 package org.worldofscala.app.world
 
 //import org.scalajs.dom
-import org.scalajs.dom.{WebGLRenderingContext => GL}
+import org.scalajs.dom.{WebGLRenderingContext => GL, *}
 
 import scala.scalajs.js.JSConverters.*
 import scala.scalajs.js.typedarray.*
@@ -34,32 +34,69 @@ object Triangle {
        |}"""
 
   def apply() =
-    canvasTag(onMountCallback { mc =>
+    canvasTag(
+      width  := "100%",
+      height := "100%",
+      onMountCallback { mc =>
 
-      val canvas = mc.thisNode.ref
-      canvas.width = 640
-      canvas.height = 480
+        val canvasH = mc.thisNode.ref
 
-      val gl      = canvas.getWebGLContext()
-      val program = gl.initShaderProgram(vertexShader, fragmentShader)
+        canvasH.width = (window.innerWidth * 0.80).toInt
+        canvasH.height = (window.innerHeight * 0.80).toInt
+        val gl      = canvasH.getWebGLContext()
+        val program = gl.initShaderProgram(vertexShader, fragmentShader)
 
-      gl.useProgram(program)
+        gl.useProgram(program)
 
-      val vertices = Array(
-        Array(-1.0f, -1.0f, 0.0f).toJSArray, //
-        Array(1.0f, -1.0f, 0.0f).toJSArray,  //
-        Array(1.0f, 1.0f, 0.0f).toJSArray
-      ).toJSArray
+        val vertices = Array(
+          Array(-1.0f, -1.0f, 0.0f).toJSArray, //
+          Array(1.0f, -1.0f, 0.0f).toJSArray,  //
+          Array(1.0f, 1.0f, 0.0f).toJSArray
+        ).toJSArray
 
-      val vertexData = new Float32Array(vertices.flatten);
-      // Updated vertex shader with matrices
-      gl.bindBuffer(GL.ARRAY_BUFFER, gl.createBuffer());
-      gl.bufferData(GL.ARRAY_BUFFER, vertexData, GL.STATIC_DRAW);
+        val vertexData = new Float32Array(vertices.flatten);
+        // Updated vertex shader with matrices
+        gl.bindBuffer(GL.ARRAY_BUFFER, gl.createBuffer());
+        gl.bufferData(GL.ARRAY_BUFFER, vertexData, GL.STATIC_DRAW);
 
-      val vertexPosition = gl.getAttribLocation(program, "vertexPosition");
-      gl.enableVertexAttribArray(vertexPosition);
-      gl.vertexAttribPointer(vertexPosition, 3, GL.FLOAT, false, 0, 0);
+        val vertexPosition = gl.getAttribLocation(program, "vertexPosition");
+        gl.enableVertexAttribArray(vertexPosition);
+        gl.vertexAttribPointer(vertexPosition, 3, GL.FLOAT, false, 0, 0);
 
-      gl.drawArrays(GL.TRIANGLES, 0, vertices.length);
-    })
+        def resizeCanvasToDisplaySize(canvas: HTMLCanvasElement) = {
+          // Lookup the size the browser is displaying the canvas in CSS pixels.
+          val displayWidth  = (window.innerWidth * 0.80).toInt
+          val displayHeight = (window.innerHeight * 0.80).toInt
+          // Check if the canvas is not the same size.
+          val needResize = canvas.width != displayWidth ||
+            canvas.height != displayHeight;
+
+          if (needResize) {
+            println(s"W ${canvas.width} - ${displayWidth}")
+            println(s"W ${canvasH.width}")
+            println(s"H ${canvas.height} - ${displayHeight}")
+            println(s"H ${canvasH.height}")
+            // Make the canvas the same size
+            canvas.width = displayWidth
+            canvas.height = displayHeight
+          }
+
+          needResize
+        }
+        def render(): Unit = {
+          gl.clearColor(1.0f, 1.0f, 1.0f, 1.0f)
+          gl.clearDepth(1.0f)
+          gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT)
+          if (resizeCanvasToDisplaySize(canvasH))
+            println(".")
+
+          gl.drawArrays(GL.TRIANGLES, 0, vertices.length);
+
+          window.requestAnimationFrame(_ => render())
+
+        }
+
+        render()
+      }
+    )
 }

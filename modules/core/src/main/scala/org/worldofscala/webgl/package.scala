@@ -2,9 +2,9 @@ package org.worldofscala.webgl
 
 import org.scalajs.dom.HTMLCanvasElement
 
-import org.scalajs.dom.{WebGLRenderingContext => GL, *}
+import org.scalajs.dom.{WebGLRenderingContext => GL, WebGL2RenderingContext => GL2, *}
 
-extension (htmlCanvas: HTMLCanvasElement) def getWebGLContext() = htmlCanvas.getContext("webgl2").asInstanceOf[GL]
+extension (htmlCanvas: HTMLCanvasElement) def getWebGLContext() = htmlCanvas.getContext("webgl2").asInstanceOf[GL2]
 
 extension (gl: GL)
   def initShaderProgram(vsSource: String, fsSource: String): WebGLProgram = {

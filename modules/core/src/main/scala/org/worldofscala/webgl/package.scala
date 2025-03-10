@@ -18,6 +18,8 @@ extension (gl: GL)
 
     if (!gl.getProgramParameter(shaderProgram, GL.LINK_STATUS).asInstanceOf[Boolean]) {
       println(s"Unable to initialize the shader program: ${gl.getProgramInfoLog(shaderProgram)}")
+      println(gl.getShaderInfoLog(vertexShader))
+      println(gl.getShaderInfoLog(fragmentShader))
       return null
     }
 

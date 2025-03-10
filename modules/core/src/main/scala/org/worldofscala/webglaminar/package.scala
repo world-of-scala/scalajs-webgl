@@ -7,6 +7,20 @@ import com.raquo.laminar.nodes.ReactiveHtmlElement
 import org.scalajs.dom.window
 import org.scalajs.dom.WebGL2RenderingContext
 
+/**
+ * Build a canvas element with WebGL 2 context initialized with vertex and
+ * fragment shaders.
+ *
+ * @param vertexShader
+ *   The vertex shader code.
+ * @param fragmentShader
+ *   The fragment shader code.
+ * @param modifiers
+ *   The modifiers to apply to the canvas element.
+ * @param welgl
+ *   The WebGL initialization function.
+ * @return
+ */
 def webglCanvas(
   vertexShader: String,
   fragmentShader: String,

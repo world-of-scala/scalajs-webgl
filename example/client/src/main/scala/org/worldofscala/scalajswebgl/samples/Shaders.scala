@@ -1,10 +1,8 @@
 package org.worldofscala.scalajswebgl.samples
 
-//import org.worldofscala.webgl.*
+import org.worldofscala.webgl.*
 import org.worldofscala.webglaminar.*
 import org.scalajs.dom.{WebGLRenderingContext => GL}
-import scala.scalajs.js.JSConverters.*
-import scala.scalajs.js.typedarray.*
 
 object Shaders {
 
@@ -32,12 +30,12 @@ object Shaders {
   def apply() = webglCanvas(vertexShader, fragmentShader) { ctx =>
     val gl = ctx.gl2
     val vertices = Array(
-      Array(-1.0f, -1.0f, 0.0f).toJSArray, //
-      Array(1.0f, -1.0f, 0.0f).toJSArray,  //
-      Array(1.0f, 1.0f, 0.0f).toJSArray
-    ).toJSArray
+      Coord(-1.0f, -1.0f, 0.0f), //
+      Coord(1.0f, -1.0f, 0.0f),  //
+      Coord(1.0f, 1.0f, 0.0f)
+    )
 
-    val vertexData = new Float32Array(vertices.flatten);
+    val vertexData = vertices.f32
     // Updated vertex shader with matrices
     gl.bindBuffer(GL.ARRAY_BUFFER, gl.createBuffer());
     gl.bufferData(GL.ARRAY_BUFFER, vertexData, GL.STATIC_DRAW);

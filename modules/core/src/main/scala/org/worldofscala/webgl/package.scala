@@ -3,6 +3,8 @@ package org.worldofscala.webgl
 import org.scalajs.dom.HTMLCanvasElement
 
 import org.scalajs.dom.{WebGLRenderingContext => GL, WebGL2RenderingContext => GL2, *}
+import scala.scalajs.js.JSConverters.*
+import scala.scalajs.js.typedarray.*
 
 extension (htmlCanvas: HTMLCanvasElement) def getWebGLContext() = htmlCanvas.getContext("webgl2").asInstanceOf[GL2]
 
@@ -39,3 +41,11 @@ extension (gl: GL)
 
     shader
   }
+
+extension (xn: Array[Coord[Float]])
+  /**
+   * Flatten the array of Coord into a Float32Array
+   *
+   * @return
+   */
+  def f32 = new Float32Array(xn.flatMap(c => Seq(c.x, c.y, c.z)).toJSArray)

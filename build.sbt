@@ -98,7 +98,7 @@ lazy val core = scalajsProject("core")
     )
   )
 
-lazy val core = scalajsProject("three")
+lazy val three = scalajsProject("three")
   .settings(
     libraryDependencies ++= Seq(
       "org.scala-js" %%% "scalajs-dom" % "2.8.1-local"
@@ -135,7 +135,7 @@ lazy val client = scalajsExampleProject("client")
   )
   .settings(scalacOptions ++= usedScalacOptions)
   .settings(clientLibraryDependencies)
-  .dependsOn(core, sharedJs)
+  .dependsOn(core, three, sharedJs)
   .settings(
     publish / skip := true
   )

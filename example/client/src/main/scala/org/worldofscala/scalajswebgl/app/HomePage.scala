@@ -12,7 +12,8 @@ object HomePage:
         demo("Shaders", Router.uiRoute("webgl", "shaders")),
         demo("Sphere", Router.uiRoute("webgl", "sphere")),
         demo("Triangle", Router.uiRoute("webgl", "adammurray", "triangle")),
-        demo("Laminar WebGL Sample", Router.uiRoute("webgl", "detect"))
+        demo("Laminar WebGL Sample", Router.uiRoute("webgl", "detect")),
+        demo("Three", Router.uiRoute("three", "math"))
       )
     )
 

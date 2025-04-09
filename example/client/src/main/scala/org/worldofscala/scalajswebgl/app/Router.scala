@@ -35,6 +35,14 @@ object Router:
         )
       )
     }
+  def threeRoutes(): Route =
+    pathPrefix("three") {
+      firstMatch(
+        path("math") {
+          org.worldofscala.scalajswebgl.samples.three.Math()
+        }
+      )
+    }
 
   def apply() =
     mainTag(
@@ -50,6 +58,7 @@ object Router:
                 HomePage()
               },
               webglRoutes(),
+              threeRoutes(),
               path("signup") {
                 signup.SignupPage()
               },

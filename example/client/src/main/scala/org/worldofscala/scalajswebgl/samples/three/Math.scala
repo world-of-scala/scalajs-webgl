@@ -1,8 +1,7 @@
 package org.worldofscala.scalajswebgl.samples.three
 
 import com.raquo.laminar.api.L.*
-import THREE.Vector2
-import THREE.MathUtils.generateUUID
+import THREE.*
 
 object Math {
 
@@ -14,7 +13,8 @@ object Math {
       p("It also includes constants like PI and E."),
       p("Math.PI: " + java.lang.Math.PI),
       p(Vector2(16, 2).x.toString()),
-      p(generateUUID())
+      p(MathUtils.generateUUID()),
+      p(Color(0xffffff).toJSON())
     )
 
 }

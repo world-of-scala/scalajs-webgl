@@ -98,6 +98,13 @@ lazy val core = scalajsProject("core")
     )
   )
 
+lazy val core = scalajsProject("three")
+  .settings(
+    libraryDependencies ++= Seq(
+      "org.scala-js" %%% "scalajs-dom" % "2.8.1-local"
+    )
+  )
+
 //
 // Client project
 // It depends on sharedJs project, a project that contains shared code between server and client.

@@ -19,9 +19,6 @@ object Router:
         path("shaders") {
           Shaders()
         },
-        path("sphere") {
-          SphereSample()
-        },
         pathPrefix("adammurray") {
           path("triangle") {
             Triangle()

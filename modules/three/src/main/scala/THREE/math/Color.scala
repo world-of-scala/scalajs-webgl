@@ -215,7 +215,7 @@ class Color(
 }
 
 @js.native
-@JSGlobal("THREE.Color")
+@JSImport("three", "Color")
 object Color extends js.Object {
 
   /**

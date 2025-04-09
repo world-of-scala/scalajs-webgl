@@ -7,7 +7,7 @@ import scala.scalajs.js.annotation._
  * Represents an axis-aligned bounding box (AABB) in 3D space.
  */
 @js.native
-@JSGlobal("THREE.Box3")
+@JSImport("three", "Box3")
 class Box3(val min: js.UndefOr[Vector3] = js.undefined, val max: js.UndefOr[Vector3] = js.undefined) extends js.Object {
 
   /** Flag that can be used for type testing. */
